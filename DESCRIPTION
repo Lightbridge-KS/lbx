@@ -1,4 +1,4 @@
-Package: lbexp
+Package: lbx
 Title: My Data Exploration Package
 Version: 0.0.0.9000
 Authors@R: 
@@ -19,4 +19,6 @@ Imports:
     magrittr,
     purrr,
     rlang,
+    scales,
+    tibble,
     tidyselect
