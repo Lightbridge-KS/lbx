@@ -2,6 +2,8 @@
 
 export("%>%")
 export(count_var_table)
+export(count_vars_plot)
+export(count_vars_plot_facet)
 importFrom(magrittr,"%>%")
 importFrom(rlang,":=")
 importFrom(scales,percent)
