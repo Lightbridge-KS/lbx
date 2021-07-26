@@ -1,1 +1,1 @@
-utils::globalVariables(c("Prop"))
+utils::globalVariables(c("prop", "Prop", "n", "pc"))
