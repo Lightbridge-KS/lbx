@@ -2,6 +2,7 @@
 
 export("%>%")
 export(count_var_table)
+export(count_vars)
 export(count_vars_plot)
 export(count_vars_plot_facet)
 export(plot_bar)
