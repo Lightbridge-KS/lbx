@@ -6,7 +6,7 @@ Authors@R:
            family = "Sirivongrungson",
            role = c("aut", "cre"),
            email = "ki11ip0.s.a.s@gmail.com")
-Description: Wrapper of data manipulating and plotting function
+Description: Wrapper of data manipulating and plotting function.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
@@ -16,6 +16,7 @@ Imports:
     forcats,
     ggplot2,
     ggrepel,
+    glue,
     magrittr,
     purrr,
     rlang,

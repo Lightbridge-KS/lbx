@@ -6,7 +6,7 @@
 \alias{lbx-package}
 \title{lbx: My Data Exploration Package}
 \description{
-Wrapper of data manipulating and plotting function
+Wrapper of data manipulating and plotting function.
 }
 \author{
 \strong{Maintainer}: Kittipos Sirivongrungson \email{ki11ip0.s.a.s@gmail.com}
