@@ -4,5 +4,10 @@
 ## usethis namespace: start
 #' @importFrom rlang :=
 #' @importFrom scales percent
+#' @importFrom stats formula
+#' @importFrom stats lm
+#' @importFrom stats p.adjust
+#' @importFrom stats setNames
+#' @importFrom stats shapiro.test
 ## usethis namespace: end
 NULL
