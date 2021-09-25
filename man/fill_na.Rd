@@ -18,3 +18,10 @@ A Vector with original element from \code{x} and filled \code{NA} from \code{fil
 Fill \code{NA}s values from \code{x} using values from \code{fill} that in the same location.
 Vector \code{x} and \code{fill} must have the same length.
 }
+\examples{
+
+v1 <- c(NA, NA, "a", NA, "b") # Trust v1
+v2 <- c(NA, "c", "d","k", NA)
+fill_na(v1, v2)
+
+}

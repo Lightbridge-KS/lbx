@@ -8,7 +8,7 @@
 #'
 #' @return A Vector with original element from `x` and filled `NA` from `fill`
 #' @export
-#' @example
+#' @examples
 #'
 #' v1 <- c(NA, NA, "a", NA, "b") # Trust v1
 #' v2 <- c(NA, "c", "d","k", NA)
