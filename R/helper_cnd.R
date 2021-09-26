@@ -7,11 +7,7 @@
 #' @param suffix Suffix of each character elements
 #'
 #' @return A message
-#' @export
 #'
-#' @examples
-#' chr <- c("a","b","c")
-#' print_messages(chr)
 print_messages <- function(x, sep = "\n", prefix = "", suffix = "") {
 
   pad_len <- length(x) - 1

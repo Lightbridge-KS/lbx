@@ -21,7 +21,3 @@ A message
 \description{
 Print Character Vector to Messages
 }
-\examples{
-chr <- c("a","b","c")
-print_messages(chr)
-}
