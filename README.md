@@ -7,9 +7,10 @@
 
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![R-CMD-check](https://github.com/Lightbridge-AI/lbx/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/Lightbridge-AI/lbx/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
-R-package for Exploratory Data Analysis
+> My Personal R-package for Exploratory Data Analysis
 
 ## Installation
 
