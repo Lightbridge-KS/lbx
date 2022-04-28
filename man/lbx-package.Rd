@@ -4,7 +4,7 @@
 \name{lbx-package}
 \alias{lbx}
 \alias{lbx-package}
-\title{lbx: My Data Exploration Package}
+\title{lbx: My Exploratory Data Analysis Package}
 \description{
 Wrapper of data manipulating and plotting function.
 }

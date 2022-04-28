@@ -1,5 +1,5 @@
 Package: lbx
-Title: My Data Exploration Package
+Title: My Exploratory Data Analysis Package
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Kittipos",
@@ -10,7 +10,7 @@ Description: Wrapper of data manipulating and plotting function.
 License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.1
+RoxygenNote: 7.1.2
 Imports: 
     dplyr,
     forcats,
@@ -25,3 +25,6 @@ Imports:
     tibble,
     tidyr,
     tidyselect
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
