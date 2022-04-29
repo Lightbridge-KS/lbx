@@ -8,12 +8,10 @@ test_that("encoder() works", {
   # No match to `NA`
   expect_equal(encoder(x, match, encode),c("A", "B", "B", NA))
   # No match to original
-  expect_equal(encoder(x, match, encode, nomatch_ok = TRUE), c("A", "B", "B", "d"))
-  # No match throw Error
-  expect_error(encoder(x, match, encode, nomatch_ok = FALSE))
+  expect_equal(encoder(x, match, encode, nomatch_na = FALSE), c("A", "B", "B", "d"))
 
-  # Error for Invalid `nomatch_ok`
-  expect_error(encoder(x, match, encode, nomatch_ok = "Something"), "`nomatch_ok`")
-  expect_error(encoder(x, match, encode, nomatch_ok = 1), "`nomatch_ok`")
+  # Error for Invalid `nomatch_na`
+  expect_error(encoder(x, match, encode, nomatch_na = "Something"), "`nomatch_na`")
+  expect_error(encoder(x, match, encode, nomatch_na = 1), "`nomatch_na`")
 
 })

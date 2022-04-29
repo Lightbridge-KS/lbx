@@ -4,21 +4,20 @@
 #' @param x (vector) Input data to be matched.
 #' @param match (vector) Value to be matched against `x`'s element
 #' @param encode (vector) Encoding vector same length as `match`
-#' @param nomatch_ok (Logical) Control behavior of non-matching elements, one of:
-#' * \strong{`NA`:} (default) return `NA` for non-matching elements.
-#' * \strong{`TRUE`:} return original element of `x`.
-#' * \strong{`FALSE`:} throw an error and message which elements in `x` not found in `match`.
+#' @param nomatch_na (Logical) Control behavior of non-matching elements, one of:
+#' * \strong{`TRUE`:} (default) return `NA` for non-matching elements.
+#' * \strong{`FALSE`:} return original elements of `x`.
 #'
 #' @return Encoded vector
 #' @export
 #'
 #' @examples
 #' encoder(c("a","b","d"), c("a","b","c"), c("A","B","C"))
-#' encoder(c("a","b","d"), c("a","b","c"), c("A","B","C"), nomatch_ok = TRUE)
+#' encoder(c("a","b","d"), c("a","b","c"), c("A","B","C"), nomatch_na = FALSE)
 encoder <- function(x, # Any vector
                     match,
                     encode = match, # Encode that pair with match
-                    nomatch_ok = NA
+                    nomatch_na = TRUE
 ) {
 
   if(length(match) != length(encode)) stop("`match` and `encode` must have same length", call. = F)
@@ -26,22 +25,16 @@ encoder <- function(x, # Any vector
   index <- match(x, match)
   encoded_may_NA <- encode[index]
 
-  if(!is.logical(nomatch_ok)) stop("`nomatch_ok` must be one of: `NA`, `TRUE`, `FALSE`.")
+  if(!is.logical(nomatch_na)) stop("`nomatch_na` must be `TRUE` or `FALSE`.")
 
-  out <- if (is.na(nomatch_ok)) {
+  out <- if (nomatch_na) {
     # `NA` for non-matching element
     encoded_may_NA
-  } else if(nomatch_ok) {
+  } else {
     # Return original element in `x` for non-matching element
     encoded_may_NA[is.na(encoded_may_NA)] <- x[is.na(encoded_may_NA)]
     encoded <- encoded_may_NA
     encoded
-  } else {
-    # Throw error and message which element in `x` not found in `match`
-    non_match <- unique(x[is.na(encoded_may_NA)])
-    on.exit(lapply(non_match, message))
-    stop("Element(s) in `x` not found in `match`:", call. = FALSE)
   }
-
   out
 }

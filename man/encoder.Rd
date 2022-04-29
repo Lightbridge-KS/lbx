@@ -4,7 +4,7 @@
 \alias{encoder}
 \title{Encode Vector}
 \usage{
-encoder(x, match, encode = match, nomatch_ok = NA)
+encoder(x, match, encode = match, nomatch_na = TRUE)
 }
 \arguments{
 \item{x}{(vector) Input data to be matched.}
@@ -13,11 +13,10 @@ encoder(x, match, encode = match, nomatch_ok = NA)
 
 \item{encode}{(vector) Encoding vector same length as \code{match}}
 
-\item{nomatch_ok}{(Logical) Control behavior of non-matching elements, one of:
+\item{nomatch_na}{(Logical) Control behavior of non-matching elements, one of:
 \itemize{
-\item \strong{\code{NA}:} (default) return \code{NA} for non-matching elements.
-\item \strong{\code{TRUE}:} return original element of \code{x}.
-\item \strong{\code{FALSE}:} throw an error and message which elements in \code{x} not found in \code{match}.
+\item \strong{\code{TRUE}:} (default) return \code{NA} for non-matching elements.
+\item \strong{\code{FALSE}:} return original elements of \code{x}.
 }}
 }
 \value{
@@ -28,5 +27,5 @@ Match and Encode vector
 }
 \examples{
 encoder(c("a","b","d"), c("a","b","c"), c("A","B","C"))
-encoder(c("a","b","d"), c("a","b","c"), c("A","B","C"), nomatch_ok = TRUE)
+encoder(c("a","b","d"), c("a","b","c"), c("A","B","C"), nomatch_na = FALSE)
 }
