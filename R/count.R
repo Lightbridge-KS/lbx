@@ -95,14 +95,16 @@ count_var_table <- function(x,
   tot_pc <- scales::percent(sum(dplyr::pull(df, Prop), na.rm = T))
   ## Add Total at last row
   if (add_total) {
-    df <- df %>% dplyr::rows_insert(
-      tibble::tibble(
-        !!var := "Total",
-        !!n := tot_count,
-        Percent = tot_pc
-      ),
-      by = as.character(var)
-    )
+    df <- df %>%
+      dplyr::mutate(!!var := as.character(!!var)) %>%
+      dplyr::rows_insert(
+        tibble::tibble(
+          !!var := "Total",
+          !!n := tot_count,
+          Percent = tot_pc
+        ),
+        by = as.character(var)
+      )
   }
 
   df %>%
