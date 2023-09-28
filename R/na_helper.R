@@ -38,7 +38,6 @@ fill_na <- function(x, fill) {
 #'
 #' @return A vector of proportion of completeness (not missing)
 #' @export
-#'
 #' @examples
 #' df <- data.frame(x = c(1, NA, 2),
 #'                  y = c(NA, "a", "b"),
