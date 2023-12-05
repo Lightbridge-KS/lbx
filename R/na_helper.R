@@ -52,3 +52,25 @@ complete_rate <- function(x,
   if(negate) return(1 - res)
   res
 }
+
+#' Remove Rows that has NAs
+#'
+#' Remove rows that has any `NA` values
+#'
+#' @param df A data.frame
+#'
+#' @return A data.frame with complete cases
+#' @export
+#'
+#' @examples
+#'
+#' df <- data.frame(x = c(1, 2, NA),
+#'                  y = c(1, NA, 3))
+#' remove_na_rows(df)
+remove_na_rows <- function(df) {
+  df |>
+    dplyr::filter(!dplyr::if_any(
+      tidyselect::everything(),
+      ~ is.na(.x)
+    ))
+}
