@@ -10,7 +10,7 @@
 #' @param ... One or more variable names (unquoted or quoted) for which the summary statistics
 #'   will be computed.
 #' @param show A character vector specifying which summary statistics to include in the output.
-#'   Possible values are `"n"`, `"mean"`, `"sd"`, `"iqr"`, `"median"`, `"skewness"`,
+#'   Possible values are `"n"`, `"mean"`, `"median"`, `"mode"`, `"sd"`, `"iqr"`, `"skewness"`,
 #'   and `"kurtosis"`. If `NULL` (default), all statistics are included.
 #'
 #' @details
@@ -24,20 +24,8 @@
 #' as a column with names formatted as `<variable>_<statistic>`.
 #'
 #' @examples
-#' library(dplyr)
-#' library(moments)
 #'
-#' # Example data
-#' df <- tibble::tibble(
-#'   Score = c(85, 90, 78, NA, 92),
-#'   Age = c(25, 30, 35, 40, 45)
-#' )
-#'
-#' # Compute all summary statistics for `Score` and `Age`
-#' get_custom_summary_stats(df, Score, Age)
-#'
-#' # Compute only mean and standard deviation for `Score`
-#' get_custom_summary_stats(df, Score, show = c("mean", "sd"))
+#' get_custom_summary_stats(iris, Sepal.Length, show = c("mean", "sd"))
 #'
 #' @export
 get_custom_summary_stats <- function(df, ..., show = NULL) {
@@ -48,9 +36,10 @@ get_custom_summary_stats <- function(df, ..., show = NULL) {
   .fns_custom_summary_stats <- list(
     n = ~ sum(!is.na(.)),
     mean = ~ mean(., na.rm = TRUE),
+    median = ~ median(., na.rm = TRUE),
+    mode = ~ compute_mode(., na.rm = TRUE),
     sd = ~ sd(., na.rm = TRUE),
     iqr = ~ IQR(., na.rm = TRUE),
-    median = ~ median(., na.rm = TRUE),
     skewness = ~ moments::skewness(., na.rm = TRUE),
     kurtosis = ~ moments::kurtosis(., na.rm = TRUE)
   )
@@ -60,7 +49,7 @@ get_custom_summary_stats <- function(df, ..., show = NULL) {
   }
 
   dplyr::summarise(df, dplyr::across(
-    .cols = c(vars_str),
+    .cols = dplyr::all_of(vars_str),
     .fns = .fns_custom_summary_stats,
     .names = "{.col}_{.fn}"
   ))

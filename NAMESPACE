@@ -2,6 +2,7 @@
 
 export("%>%")
 export(complete_rate)
+export(compute_mode)
 export(count_var_table)
 export(count_vars)
 export(count_vars_plot)

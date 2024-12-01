@@ -13,7 +13,7 @@ get_custom_summary_stats(df, ..., show = NULL)
 will be computed.}
 
 \item{show}{A character vector specifying which summary statistics to include in the output.
-Possible values are \code{"n"}, \code{"mean"}, \code{"sd"}, \code{"iqr"}, \code{"median"}, \code{"skewness"},
+Possible values are \code{"n"}, \code{"mean"}, \code{"median"}, \code{"mode"}, \code{"sd"}, \code{"iqr"}, \code{"skewness"},
 and \code{"kurtosis"}. If \code{NULL} (default), all statistics are included.}
 }
 \value{
@@ -33,19 +33,7 @@ the \code{moments} package for skewness and kurtosis. The resulting summary stat
 are named dynamically as \verb{<variable>_<statistic>}.
 }
 \examples{
-library(dplyr)
-library(moments)
 
-# Example data
-df <- tibble::tibble(
-  Score = c(85, 90, 78, NA, 92),
-  Age = c(25, 30, 35, 40, 45)
-)
-
-# Compute all summary statistics for `Score` and `Age`
-get_custom_summary_stats(df, Score, Age)
-
-# Compute only mean and standard deviation for `Score`
-get_custom_summary_stats(df, Score, show = c("mean", "sd"))
+get_custom_summary_stats(iris, Sepal.Length, show = c("mean", "sd"))
 
 }
